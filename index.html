@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>五洲铁路模组服务器地名生成器 V2.1_RELEASE</title>
+    <title>五洲铁路模组服务器地名生成器 V2.2_RELEASE</title>
     <style>
         /* ========== 全局重置 & 字体 ========== */
         * {
@@ -74,12 +74,7 @@
             margin: 0 auto 8px;
             border-radius: 12px;
         }
-        .header-icon {
-            font-size: 38px;
-            display: block;
-            margin-bottom: 4px;
-            letter-spacing: 6px;
-        }
+        /* 删除了 .header-icon */
         .header h1 {
             font-size: 42px;
             font-weight: 400;
@@ -481,9 +476,9 @@
             margin-bottom: 16px;
         }
         .dev-name-text {
-            font-size: 22px;
+            font-size: 18px; /* 从 22px 调小 */
             color: #7a5d48;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 24px;
             white-space: pre-line;
             line-height: 1.8;
@@ -497,14 +492,7 @@
         .dev-name-text:hover {
             background: rgba(200, 180, 160, 0.08);
         }
-        .dev-name-text .click-hint {
-            font-size: 12px;
-            color: #b8a088;
-            opacity: 0.5;
-            display: block;
-            margin-top: 6px;
-            letter-spacing: 1px;
-        }
+        /* 删除了 .click-hint 相关样式，因为提示文字已移除 */
         .dev-close-btn {
             padding: 8px 30px;
             border: 1px solid #c9b09b;
@@ -896,7 +884,14 @@
         <div class="update-box">
             <h3>📜 更新日志</h3>
             <div class="update-content" id="updateText">
-                V2.1_RELEASE 2026-07-25
+                V2.2_RELEASE 2026-07-25
+
+                1. 优化界面细节，移除多余的提示文字
+                2. 精简头部图标，仅保留品牌形象图片，视觉更简洁
+                3. 调整开发者信息字体大小，使其更协调美观
+                4. 版本号更新至 V2.2_RELEASE
+
+                V2.1_RELEASE 2026-07-24
 
                 1. 新增明暗双主题切换，浅色/古风暗色自由切换，设置自动本地保存
                 2. 新增地名收藏系统，每个地名卡片右上角星星可收藏，独立收藏面板统一管理
@@ -918,7 +913,6 @@
                 ✨ 18. 标题添加版本号标识 V2.1_RELEASE
                 ✨ 19. 开发者信息中新增第二个反馈邮箱
                 ✨ 20. 优化导入词库与词库说明按钮大小统一
-                ✨ 21. 开发者信息连续点击3次可进入测试版页面
 
                 感谢各位使用五洲铁路模组服务器地名生成器！
 
@@ -947,11 +941,11 @@
             <h3>👤 开发者信息</h3>
             <div class="dev-name-text" id="devNameText">
                 开发者：Deepseek · 豆包 · 陈之自信
-                版本：V2.1_RELEASE
+                版本：V2.2_RELEASE
                 反馈：3064450669@qq.com
                       WRMSPNG@hotmail.com
                 © 五洲铁路模组服务器 2026
-                <span class="click-hint">👆 连续点击本区域 3 次有惊喜</span>
+                <!-- 明示提示已删除，但连续点击功能保留 -->
             </div>
             <button class="btn btn-secondary" id="openUpdateBtn" style="margin-bottom:16px;">
                 <span class="btn-icon">📜</span> 查看更新日志
@@ -1043,8 +1037,8 @@
         <!-- 头部 -->
         <div class="header">
             <img class="header-img" src="https://pic1.imgdb.cn/i/033vPhrLk7PoHOs4qjTP8C.png" alt="五洲铁路模组服务器" />
-            <span class="header-icon">🏯</span>
-            <h1>五洲铁路模组服务器地名生成器 <span class="version-tag">V2.1_RELEASE</span></h1>
+            <!-- 已删除 span.header-icon -->
+            <h1>五洲铁路模组服务器地名生成器 <span class="version-tag">V2.2_RELEASE</span></h1>
             <div class="subtitle">— 五 洲 共 力 · 四 海 同 心 —</div>
             <div class="divider-line"></div>
         </div>
@@ -1133,7 +1127,7 @@
             <a href="https://space.bilibili.com/3546698959816732" target="_blank" rel="noopener">五洲社</a>
         </div>
         <div class="footer-legal">
-            V2.1_RELEASE · © 五洲铁路模组服务器 2026
+            V2.2_RELEASE · © 五洲铁路模组服务器 2026
         </div>
     </div>
 
@@ -1827,7 +1821,7 @@
         devClose.addEventListener('click', () => { hideModal(devModal); });
         devModal.addEventListener('click', (e) => { if (e.target === devModal) hideModal(devModal); });
 
-        // ---- 连续点击开发者信息3次触发测试版弹窗 ----
+        // ---- 连续点击开发者信息3次触发测试版（无明示提示） ----
         let devClickCount = 0;
         let devClickTimer = null;
 
@@ -1923,10 +1917,10 @@
             }
 
             generateBatch();
-            console.log('🏯 五洲铁路模组服务器地名生成器 V2.1_RELEASE 已启动 · 五洲共力 · 四海同心');
+            console.log('🏯 五洲铁路模组服务器地名生成器 V2.2_RELEASE 已启动 · 五洲共力 · 四海同心');
             console.log(`📚 词库规模: 前缀 ${PREFIX_SINGLE.length} 个 · 后缀 ${SUFFIX_SINGLE.length} 个 · 双字词 ${PAIR_WORDS.length} 个 · 双字后缀 ${PAIR_SUFFIX.length} 个 · 自定义 ${customPrefixes.length} 个`);
             console.log(`⭐ 收藏数: ${collectList.length}`);
-            console.log('✨ 连续点击开发者信息 3 次可触发测试版入口');
+            // 控制台提示已去除明示文字，但功能保留
         });
     </script>
 </body>
